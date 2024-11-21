@@ -19,3 +19,14 @@ void keys_push(Keys *self, String *k) {
 
 	self->k[self->length - 1] = *k;
 }
+
+void keys_drop(Keys *self) {
+	for (int i = 0; i < self->length; ++i) {
+		string_drop(&self->k[i]);
+	}
+
+	free(self->k);
+
+	self->capacity = 0;
+	self->length = 0;
+}

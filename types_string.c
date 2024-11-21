@@ -83,6 +83,7 @@ StringView string_as_string_view(String *self) {
 void string_drop(String *self) {
 	free(self->s);
 	self->capacity = 0;
+	self->length = 0;
 }
 
 char* string_as_c_str(String *self) {

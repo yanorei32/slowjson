@@ -12,5 +12,6 @@ struct {
 
 Keys keys_new();
 void keys_push(Keys *self, String *k);
+void keys_drop(Keys *self);
 
 #endif

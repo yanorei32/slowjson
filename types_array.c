@@ -1,3 +1,4 @@
+#include <malloc.h>
 #include "types_array.h"
 #include "types_value.h"
 
@@ -17,4 +18,15 @@ void array_push(Array *self, Value *v) {
 	}
 
 	self->v[self->length - 1] = *v;
+}
+
+void array_drop(Array *self) {
+	for (int i = 0; i < self->length; ++i) {
+		value_drop(&self->v[i]);
+	}
+
+	free(self->v);
+
+	self->capacity = 0;
+	self->length = 0;
 }

@@ -7,4 +7,6 @@
 int main() {
 	Value v = parse_value(stdin);
 	println_value(&v);
+	value_drop(&v);
+	println_value(&v);
 }

@@ -14,6 +14,6 @@ struct {
 Array array_new();
 
 void array_push(Array *self, Value *v);
+void array_drop(Array *self);
 
 #endif
-

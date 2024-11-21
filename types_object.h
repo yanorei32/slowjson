@@ -12,5 +12,6 @@ struct {
 Object object_new();
 
 void object_push(Object *self, String *k, Value *v);
+void object_drop(Object *self);
 
 #endif

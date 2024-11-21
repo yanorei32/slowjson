@@ -16,4 +16,6 @@ struct Value {
 	};
 } typedef Value;
 
+void value_drop(Value *self);
+
 #endif
