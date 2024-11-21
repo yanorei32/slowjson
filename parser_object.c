@@ -27,17 +27,8 @@ OBJECT_IGNORE_WHITESPACE:
 }
 
 void consume_colon(FILE *stream) {
-	int c;
-
-OBJECT_IGNORE_WHITESPACE:
-	c = getc(stream);
-
-	switch (c) {
-		case ':':
-			return;
-		default:
-			panic("Object内に謎の文字");
-	}
+	if (getc(stream) == ':') return;
+	panic("Object内に謎の文字");
 }
 
 // おやくそく: 最初に '[' がある状態できてね
