@@ -1,7 +1,8 @@
 #include <stdio.h>
 
-#include "types.h"
+#include "types_object.h"
 #include "panic.h"
+
 #include "parser_value.h"
 
 void consume_whitespaces(FILE *stream) {

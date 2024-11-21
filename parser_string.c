@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "types.h"
+#include "types_rustlike.h"
+#include "types_string.h"
 #include "panic.h"
 
 u32 c2u32(char c) {
