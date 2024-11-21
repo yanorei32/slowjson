@@ -12,6 +12,5 @@ struct {
 Object object_new();
 
 void object_push(Object *self, String *k, Value *v);
-void object_format(Object *self, String *output, int indent);
 
 #endif

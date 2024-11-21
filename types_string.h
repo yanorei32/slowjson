@@ -31,10 +31,6 @@ void string_drop(String *self);
 
 char* string_as_c_str(String *self);
 
-void string_format(String *self, String *output, int indent);
-
 int string_equals(String *self, String *b);
-
-String format_string(String *str);
 
 #endif

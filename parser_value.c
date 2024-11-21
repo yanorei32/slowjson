@@ -3,14 +3,16 @@
 
 #include <stdio.h>
 
-#include "parser_string.h"
-#include "parser_number.h"
 #include "parser_boolean.h"
 #include "parser_null.h"
-#include "parser_array.h"
+#include "parser_string.h"
 #include "parser_object.h"
+#include "parser_number.h"
+#include "parser_array.h"
 
-#include "types.h"
+#include "types_type_id.h"
+#include "types_value.h"
+
 #include "panic.h"
 
 Value parse_value(FILE *stream) {

@@ -1,4 +1,5 @@
-#include "types.h"
+#include "types_array.h"
+#include "types_value.h"
 #include "parser_value.h"
 
 // おやくそく: 最初に '[' がある状態できてね

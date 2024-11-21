@@ -1,9 +1,11 @@
 #include <stdio.h>
 
-#include "types_object.h"
-#include "panic.h"
 
 #include "parser_value.h"
+#include "panic.h"
+
+#include "types_object.h"
+#include "types_value.h"
 
 void consume_whitespaces(FILE *stream) {
 	int c;

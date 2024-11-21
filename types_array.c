@@ -1,5 +1,5 @@
 #include "types_array.h"
-#include "types.h"
+#include "types_value.h"
 
 Array array_new() {
 	return (Array) {
@@ -17,23 +17,4 @@ void array_push(Array *self, Value *v) {
 	}
 
 	self->v[self->length - 1] = *v;
-}
-
-void array_format(Array *self, String *output, int indent) {
-	for (int i = 0; i < indent; ++i)
-		string_push_str(output, "  ");
-	string_push_str(output, "[\n");
-
-	for (int n = 0; n < self->length; n++) {
-		value_format(&self->v[n], output, indent + 1);
-		if (n == self->length - 1) {
-			string_push_char(output, '\n');
-		} else {
-			string_push_str(output, ",\n");
-		}
-	}
-
-	for (int i = 0; i < indent; ++i)
-		string_push_str(output, "  ");
-	string_push_char(output, ']');
 }

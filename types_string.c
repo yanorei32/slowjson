@@ -91,15 +91,6 @@ char* string_as_c_str(String *self) {
 	return self->s;
 }
 
-void string_format(String *self, String *output, int indent) {
-	for (int i = 0; i < indent; ++i)
-		string_push_str(output, "  ");
-
-	string_push_char(output, '"');
-	string_push_string_view(output, string_as_string_view(self));
-	string_push_char(output, '"');
-}
-
 int string_equals(String *self, String *b) {
 	if (self->length != b->length) return 0;
 
@@ -107,10 +98,4 @@ int string_equals(String *self, String *b) {
 		if (self->s[i] != b->s[i]) return 0;
 
 	return 1;
-}
-
-String format_string(String *str) {
-	String s = string_new();
-	string_format(str, &s, 0);
-	return s;
 }
