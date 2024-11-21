@@ -9,7 +9,7 @@ typedef uint32_t u16;
 
 #include "types.h"
 
-char const* type_as_str(Type t) {
+char const* type_as_str(TypeId t) {
 	switch (t) {
 		case NumberId:
 			return "Number";

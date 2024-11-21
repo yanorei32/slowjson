@@ -17,9 +17,9 @@ enum {
 	TrueId,
 	FalseId,
 	NullId,
-} typedef Type;
+} typedef TypeId;
 
-char const* type_as_str(Type t);
+char const* type_as_str(TypeId t);
 
 struct {
 	char* s;
@@ -85,7 +85,7 @@ struct {
 } typedef Object;
 
 struct Value {
-	Type type_id;
+	TypeId type_id;
 	union {
 		double number;
 		String string;
