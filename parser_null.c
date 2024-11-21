@@ -1,7 +1,4 @@
-#ifndef NULL_H
-#define NULL_H
-
-#include "types.h"
+#include <stdio.h>
 #include "panic.h"
 
 void consume_null(FILE *stream) {
@@ -10,6 +7,3 @@ void consume_null(FILE *stream) {
 	if (getc(stream) != 'l') panic("Expected 'l'");
 	if (getc(stream) != 'l') panic("Expected 'l'");
 }
-
-#endif
-

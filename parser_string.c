@@ -1,6 +1,3 @@
-#ifndef STRING_H
-#define STRING_H
-
 #include <stdio.h>
 #include <string.h>
 
@@ -106,5 +103,3 @@ String parse_string(FILE *stream) {
 
 	panic("\"が来ませんでした。");
 }
-
-#endif

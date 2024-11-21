@@ -2,14 +2,13 @@
 #define VALUE_H
 
 #include <stdio.h>
-#include <string.h>
 
-#include "string.h"
-#include "number.h"
-#include "boolean.h"
-#include "null.h"
-#include "array_parse.h"
-#include "object.h"
+#include "parser_string.h"
+#include "parser_number.h"
+#include "parser_boolean.h"
+#include "parser_null.h"
+#include "parser_array.h"
+#include "parser_object.h"
 
 #include "types.h"
 #include "panic.h"

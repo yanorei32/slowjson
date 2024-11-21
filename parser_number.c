@@ -1,8 +1,4 @@
-#ifndef NUMBER_H
-#define NUMBER_H
-
 #include <stdio.h>
-#include "panic.h"
 
 int c2int(char c) {
 	return c - '0';
@@ -119,5 +115,3 @@ double parse_number(FILE *stream) {
 
 	return value;
 }
-
-#endif

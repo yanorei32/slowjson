@@ -1,14 +1,8 @@
-#ifndef OBJECT_H
-#define OBJECT_H
-
 #include <stdio.h>
-#include <stdlib.h>
 
-#include "string.h"
 #include "types.h"
 #include "panic.h"
-
-Value parse_value(FILE *stream);
+#include "parser_value.h"
 
 void consume_whitespaces(FILE *stream) {
 	int c;
@@ -85,5 +79,3 @@ Object parse_object(FILE *stream) {
 
 	return o;
 }
-
-#endif

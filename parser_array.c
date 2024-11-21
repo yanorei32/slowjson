@@ -1,13 +1,5 @@
-#ifndef ARRAY_PARSE_H
-#define ARRAY_PARSE_H
-
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "types.h"
-#include "panic.h"
-
-Value parse_value(FILE *stream);
+#include "parser_value.h"
 
 // おやくそく: 最初に '[' がある状態できてね
 Array parse_array(FILE *stream) {
@@ -38,5 +30,3 @@ Array parse_array(FILE *stream) {
 
 	return a;
 }
-
-#endif
