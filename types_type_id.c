@@ -1,6 +1,6 @@
 #include "types_type_id.h"
 
-char const* type_as_str(TypeId t) {
+char const* type_id_as_str(TypeId t) {
 	switch (t) {
 		case NumberId:
 			return "Number";

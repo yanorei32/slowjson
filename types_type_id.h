@@ -11,6 +11,6 @@ enum {
 	NullId,
 } typedef TypeId;
 
-char const* type_as_str(TypeId t);
+char const* type_id_as_str(TypeId t);
 
 #endif
