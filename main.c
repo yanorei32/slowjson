@@ -1,5 +1,3 @@
-#include <assert.h>
-
 #include "parser_value.h"
 #include "types_value.h"
 #include "print_util.h"
