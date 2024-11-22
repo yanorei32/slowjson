@@ -9,6 +9,7 @@
 #include "parser_object.h"
 #include "parser_number.h"
 #include "parser_array.h"
+#include "parser_whitespaces.h"
 
 #include "types_type_id.h"
 #include "types_value.h"
@@ -16,23 +17,24 @@
 #include "panic.h"
 
 Value parse_value(FILE *stream) {
-	int c;
-
-IGNORE_WHITESPACE:
-	c = getc(stream);
+	consume_whitespaces(stream);
+	int c = getc(stream);
 
 	switch (c) {
 		case '"':
 			ungetc(c, stream);
+			String s = parse_string(stream);
+			consume_whitespaces(stream);
 
 			return (Value) {
 				.type_id = StringId,
-				.string = parse_string(stream),
+				.string = s,
 			};
 
 		case 'n':
 			ungetc(c, stream);
 			consume_null(stream);
+			consume_whitespaces(stream);
 
 			return (Value) {
 				.type_id = NullId,
@@ -41,6 +43,7 @@ IGNORE_WHITESPACE:
 		case 'f':
 			ungetc(c, stream);
 			consume_false(stream);
+			consume_whitespaces(stream);
 
 			return (Value) {
 				.type_id = FalseId,
@@ -49,6 +52,7 @@ IGNORE_WHITESPACE:
 		case 't':
 			ungetc(c, stream);
 			consume_true(stream);
+			consume_whitespaces(stream);
 
 			return (Value) {
 				.type_id = TrueId,
@@ -66,31 +70,32 @@ IGNORE_WHITESPACE:
 		case '8':
 		case '9':
 			ungetc(c, stream);
+			double number = parse_number(stream);
+			consume_whitespaces(stream);
+
 			return (Value) {
 				.type_id = NumberId,
-				.number = parse_number(stream),
+				.number = number,
 			};
-
-		case ' ':
-		case '\n':
-		case '\r':
-		case '\t':
-			goto IGNORE_WHITESPACE;
 
 		case '[':
 			ungetc(c, stream);
+			Array array = parse_array(stream);
+			consume_whitespaces(stream);
 
 			return (Value) {
 				.type_id = ArrayId,
-				.array = parse_array(stream),
+				.array = array,
 			};
 
 		case '{':
 			ungetc(c, stream);
+			Object object = parse_object(stream);
+			consume_whitespaces(stream);
 
 			return (Value) {
 				.type_id = ObjectId,
-				.object = parse_object(stream),
+				.object = object,
 			};
 
 		default:

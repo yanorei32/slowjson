@@ -1,6 +1,8 @@
 #include "types_array.h"
 #include "types_value.h"
+
 #include "parser_value.h"
+#include "parser_whitespaces.h"
 
 // おやくそく: 最初に '[' がある状態できてね
 Array parse_array(FILE *stream) {
@@ -12,6 +14,7 @@ Array parse_array(FILE *stream) {
 	getc(stream);
 
 	while (1) {
+		consume_whitespaces(stream);
 		c = getc(stream);
 
 		if (c == ']') {

@@ -1,30 +1,10 @@
 #include <stdio.h>
 
-
-#include "parser_value.h"
-#include "panic.h"
-
 #include "types_object.h"
 #include "types_value.h"
-
-void consume_whitespaces(FILE *stream) {
-	int c;
-
-OBJECT_IGNORE_WHITESPACE:
-	c = getc(stream);
-
-	switch (c) {
-		case ' ':
-		case '\n':
-		case '\r':
-		case '\t':
-			goto OBJECT_IGNORE_WHITESPACE;
-
-		default:
-			ungetc(c, stream);
-			return;
-	}
-}
+#include "parser_value.h"
+#include "parser_whitespaces.h"
+#include "panic.h"
 
 void consume_colon(FILE *stream) {
 	if (getc(stream) == ':') return;
@@ -42,14 +22,13 @@ Object parse_object(FILE *stream) {
 
 	while (1) {
 		consume_whitespaces(stream);
-
 		c = getc(stream);
 
 		if (c == '}') {
 			break;
 		}
 
-		// 無視する
+		// parse_valueは自動的に終了するから ',' は読み飛ばせばよい
 		if (c == ',') {
 			continue;
 		}
@@ -62,13 +41,10 @@ Object parse_object(FILE *stream) {
 			panic("KeyがStringじゃないよー");
 		}
 
-		consume_whitespaces(stream);
 		consume_colon(stream);
 
 		Value v = parse_value(stream);
 		object_push(&o, &k.string, &v);
-
-		consume_whitespaces(stream);
 	}
 
 	return o;
