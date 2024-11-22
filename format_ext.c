@@ -32,8 +32,9 @@ void number_format(double v, String *output, int indent) {
 	for (int i = 0; i < indent; ++i)
 		string_push_str(output, "  ");
 
-	char buf[32];
+	char buf[1024];
 	sprintf(buf, "%lf", v);
+
 	string_push_str(output, buf);
 }
 

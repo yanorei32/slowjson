@@ -4,5 +4,4 @@
 #include <stdio.h>
 
 double parse_number(FILE *stream);
-
 #endif
